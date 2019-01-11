@@ -24,10 +24,14 @@
 		  font-size: 3.5rem;
 		}
 	  }
+	 .my-sm-0:hover{
+		background-color:orange;
+		
+	 }
   </style>
   <body>
     <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background:linear-gradient(to bottom right,#524E4D, #626063, #898989, #CBD0D3)!important">
     <a class="navbar-brand" href="#">Carousel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,7 +50,7 @@
       </ul>
       <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:#fff;border-color:orange;">Search</button>
       </form>
     </div>
   </nav>
@@ -54,7 +58,7 @@
 
 <main role="main">
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -62,8 +66,8 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><rect fill="#777" width="100%" height="100%"/></svg>
-        <div class="container">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><defs><pattern id="bgId2" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/bg3.jpg"></image></pattern></defs><rect width="100%" height="100%" fill="#eee"/><image width="100%" height="100%" href="./image/bg4.jpg"></image></svg>
+        <div class="container">			
           <div class="carousel-caption text-left">
             <h1>示例1号</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -72,7 +76,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><rect fill="#777" width="100%" height="100%"/></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><defs><pattern id="bgId2" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/bg3.jpg"></image></pattern></defs><rect width="100%" height="100%" fill="#777"/><image width="100%" height="100%" href="./image/bg4.jpg"></image></svg>
         <div class="container">
           <div class="carousel-caption">
             <h1>实例二号</h1>
@@ -82,7 +86,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><rect fill="#777" width="100%" height="100%"/></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><defs><pattern id="bgId3" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/bg3.jpg"></image></pattern></defs><rect width="100%" height="100%" fill="#777"/><image width="100%" height="100%" href="./image/bg4.jpg"></image></svg>
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>还有一个示例</h1>
@@ -117,7 +121,7 @@
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId1" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image6.jpg"></image></pattern></defs><rect fill="url(#imgId1)" width="100%" height="100%"/><text fill="#aaa" dy=".3em" x="50%" y="50%">500x500</text></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId7" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image7.jpg"></image></pattern><filter id="filter" x="0" y="0"><feGaussianBlur stdDeviation="5" /><feOffset dx="5" dy="5" /></filter></defs><rect fill="grey" filter="url(#filter)" width="96%" height="96%"/><rect width="96%" height="96%" fill="url(#imgId7)" /></svg>
       </div>
     </div>
 
@@ -129,7 +133,7 @@
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><rect fill="#fff" width="100%" height="100%"/><image width="100%" height="100%" href="./image/image4.JPG"></image></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId6" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image6.jpg"></image></pattern><filter id="filter" x="0" y="0"><feGaussianBlur stdDeviation="5" /><feOffset dx="5" dy="5" /></filter></defs><rect fill="grey" filter="url(#filter)" width="96%" height="96%"/><rect width="96%" height="96%" fill="url(#imgId6)" /></svg>
       </div>
     </div>
 
@@ -141,7 +145,7 @@
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
       <div class="col-md-5">
-		<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image2.jpg"></image></pattern></defs><rect fill="url(#imgId)" width="100%" height="100%"/><text fill="#aaa" dy=".3em" x="50%" y="50%">500x500</text></svg>
+		<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId5" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image5.jpg"></image></pattern><filter id="filter" x="0" y="0"><feGaussianBlur stdDeviation="5" /><feOffset dx="5" dy="5" /></filter></defs><rect fill="grey" filter="url(#filter)" width="96%" height="96%"/><rect width="96%" height="96%" fill="url(#imgId5)" /></svg>
       </div>
     </div>
 
@@ -149,8 +153,8 @@
 	
 	<div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">Hello, 今天怎么样. <span class="text-muted">看看你自己.</span></h2>
+        <p class="lead">在三十岁之前，及时回头，改正。从此褪下幼稚的外衣。将智慧带走。然后，要做一个合格人。开始负担，开始顽强地爱着生活，爱着世界。</p>
       </div>
       <div class="col-md-5 order-md-1">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 替换"><defs><pattern id="imgId2" width="1" height="1"><image width="100%" height="100%" xlink:href="./image/image2.jpg"></image></pattern><filter id="filter" x="0" y="0"><feGaussianBlur stdDeviation="5" /><feOffset dx="5" dy="5" /></filter></defs><rect fill="grey" filter="url(#filter)" width="96%" height="96%"/><rect width="96%" height="96%" fill="url(#imgId2)" /></svg>
@@ -172,4 +176,9 @@
 </main>
 		
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myCarousel").carousel('pause');
+	});
+</script>
 </html>
