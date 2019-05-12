@@ -31,13 +31,6 @@
 	 .header-famliy{
 		font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 	 }
-	 .lm-shadow{
-		background:#fff;
-		-moz-box-shadow: 2px 2px 10px #CBD0D3;
-		-webkit-box-shadow: 2px 2px 10px #CBD0D3;
-		box-shadow:2px 2px 10px #CBD0D3;
-		padding-top:60px;
-	 }
   </style>
   <body>
     <header>
@@ -67,37 +60,242 @@
 </header>
 
 <main role="main" class="lm-shadow">
- <div style="font:bold 20px arial,serif;margin:0em 0.1em 0em 0.5em;">这个文章的标题</div>
+ <div style="margin:0em 0.1em 0em 0.5em;">
+    <h1>log4j2的配置，不同级别日志保存在不同文件夹（基于Springboot)</h1>
+</div>
   <div style="font-size:0.9rem;margin:0.5em 0.1em 0.1em 0.5em;color:grey;">
 	  <label>2019年1月11日22:49:51</label>
 	  <label style="margin:0 0 0 5em">栗子味橙子</label>
 	  <label style="margin:0 0 0 5em">标签</label>
   </div>
-  <hr class="featurette-divider" style="margin-top:0;height:0.1em;background-color:#eee;">
-  <div class="container marketing" >
-<p><ul><li><a href="#jettywar_1">关于使用jetty部署war包后调用其他接口不通的问题</a></li><ul><li><a href="#1_2">1、现象描述</a></li><li><a href="#2_4">2、解决办法</a></li><li><a href="#3_8">3、扩充</a></li></ul></ul></p>
-<h1><a id="jettywar_1"></a>关于使用jetty部署war包后调用其他接口不通的问题</h1>
-<h2><a id="1_2"></a>1、现象描述</h2>
+  <hr style="border-bottom: 1px solid #ddd;">
+  <!-- <p>[TOC]</p> -->
+<h2>1.前言汇总</h2>
 <blockquote>
-<p>用eclipse工具开发java的web项目，eclipse上也是集成jetty服务器，开发调试的时候调用外部接口都一切正常的，（当时调用的tencent的地图的接口），但是把项目打成war后，扔到jetty的webapp目录下面，通过命令java -jar start.jar启动后，本省系统功能都是一切正常的，但是当访问地图接口时就出现异常的，感觉是连接有异常的原因，整了很久都不知道原因，开始考虑过是jetty版本的问题，但是换了好几个版本都是不行。后来是觉得是编码是不是有什么问题，然后就查找问问同事，试了一下还真是。</p>
+<ul>
+<li>目的是想按照按照规定的格式打印在控制台，以及以文件的形式保存下来，并且按照日志的级别，保存为不同的log文件.</li>
+<li>首先你得搭建一个简单的springboot项目，这个就直接在网上查，例子数不胜数</li>
+<li>然后在pom.xml文件中添加依赖：</li>
+</ul>
 </blockquote>
-<h2><a id="2_4"></a>2、解决办法</h2>
-<blockquote>
-<p>启动的时候，启动命令如下：java -Dfile.encoding=UTF-8 -jar start.jar<br />
-<img src="https://i.imgur.com/73x12A4.png" alt="" /><br />
-图中我把命令写为一个bat文件，双击直接运行就行了，但是启动后发现，启动日志中的中文都变成了乱码，估计就是项目的编码和jetty服务器的编码有冲突造成了，因为比较急所以没去纠结怎么觉得这个乱码的问题，</p>
-</blockquote>
-<h2><a id="3_8"></a>3、扩充</h2>
-<blockquote>
-<p>直接像上图那样启动，会默认在C:\Users\Administrator\AppData\Local\Temp目录下解压war包，直接在jetty的根目录下间一个work文件夹，jetty就会把war文件解压到这里。</p>
-</blockquote>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;!--添加log4j的依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-log4j2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
 
-  </div><!-- /.container -->
-  <!-- FOOTER -->
-  <footer class="container">
-  	<p class="float-right" ><a href="#">Back to top</a></p>
-	<p class="float-left">&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+<blockquote>
+<ul>
+<li>至于为什么要加上exclusions那一段标签，原因是因为springboot有个默认的日志，叫logback,
+其实这个日志也是比较好用的，可以看我的下篇文章阐述；所以要把他排除，不然也许会报出错误。</li>
+<li>然后是在resources目录下加入日志的配置文件，至于名字,在log4j2里，配置文件检测的过程如下：</li>
+</ul>
+<blockquote>
+<ol>
+<li>log4j会检测名为&quot;log4j.configurationFile&quot;的系统属性值，如果这个值被设置了，则会尝试通过ConfigurationFactory来加载这个值对应的文件。</li>
+<li>否则它会尝试查找log4j2-test.properties这个文件。</li>
+<li>否则它会尝试查找文件log4j2-test.yaml 和 log4j2-test.yml。</li>
+<li>否则它会尝试查找文件log4j2-test.json 和 log4j2-test.jsn。</li>
+<li>否则查找文件log4j2-test.xml。</li>
+<li>否则查找文件log4j2.properties。</li>
+<li>否则查找文件log4j2.yaml 和 log4j2.yml。</li>
+<li>否则查找文件log4j2.json 和 log4j2.jsn。</li>
+<li>否则查找文件log4j2.xml。</li>
+</ol>
+</blockquote>
+<ul>
+<li>我直接取的是log4j2.xml</li>
+</ul>
+</blockquote>
+<h2>log4j2.xml的实际配置</h2>
+<blockquote>
+<ul>
+<li>这里我直接po出整个log4j2.xml吧，详细的解释我就直接写在配置文件中的注释了吧</li>
+</ul>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration packages=&quot;com.example.baseframe.myspringboot.config&quot;&gt;
+&lt;Properties&gt;
+    &lt;property name=&quot;Log_Home&quot;&gt;d:/logs/myspringboot/&lt;/property&gt;
+&lt;/Properties&gt;
+&lt;appenders&gt;
+    &lt;!--这个输出控制台的配置--&gt;
+    &lt;Console name=&quot;Console&quot; target=&quot;SYSTEM_OUT&quot;&gt;
+        &lt;!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）,ACCEPT(接受其及以上)，DENY(拒绝以下)，NEUTRAL(中立，由下一个ThresholdFilter处理)--&gt;
+        &lt;ThresholdFilter level=&quot;TRACE&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot; /&gt;
+        &lt;!--输出日志格式--&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+    &lt;/Console&gt;
+    &lt;!--这个会只打印出所有的DEBUG信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Debug&quot; fileName=&quot;${Log_Home}/debug/debug.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;!-- 日志文件大小 --&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;!-- 最多保留文件数 --&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;!--至于为什么只会打印出DEBUG级别的日志，就是因为下面的Filters标签,
+            onMatch=&quot;ACCEPT&quot; 表示匹配该级别及以上
+            onMatch=&quot;DENY&quot; 表示不匹配该级别及以上
+            onMatch=&quot;NEUTRAL&quot; 表示该级别及以上的，由下一个filter处理，如果当前是最后一个，则表示匹配该级别及以上
+            onMismatch=&quot;ACCEPT&quot; 表示匹配该级别以下
+            onMismatch=&quot;NEUTRAL&quot; 表示该级别及以下的，由下一个filter处理，如果当前是最后一个，则不匹配该级别以下的--&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;INFO&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;DEBUG&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的INFO信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Info&quot; fileName=&quot;${Log_Home}/info/info.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;WARN&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;INFO&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的WARN信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Warn&quot; fileName=&quot;${Log_Home}/warn/warn.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;ERROR&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;WARN&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的ERROR信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Error&quot; fileName=&quot;${Log_Home}/error/error.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;ERROR&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+&lt;/appenders&gt;
+
+&lt;Loggers&gt;
+    &lt;!--然后定义logger，只有定义了logger并引入的appender，
+        appender才会生效，additivity默认是true,表示将此logger的打印信息向上级传递，
+        在这儿root就是他的上级，root的设置的打印级别是debug,logger级别没有低于他，
+        所以root里面也会打印一遍--&gt;
+    &lt;logger name=&quot;com.example.baseframe.myspringboot&quot; level=&quot;DEBUG&quot; additivity=&quot;true&quot;&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Debug&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Info&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Warn&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Error&quot; /&gt;
+    &lt;/logger&gt;
+    &lt;!--建立一个默认的root的logger--&gt;
+    &lt;root level=&quot;DEBUG&quot;&gt;
+        &lt;AppenderRef ref=&quot;Console&quot; /&gt;
+    &lt;/root&gt;
+&lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+
+<blockquote>
+<ul>
+<li>在java代码中怎么使用</li>
+</ul>
+</blockquote>
+<pre><code>public class Log4j2DemoApplication implements ApplicationRunner {
+    private static final Logger logger = LogManager.getLogger(Log4j2DemoApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(Log4j2DemoApplication.class, args);
+    }
+
+    @Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+        logger.debug(&quot;Debugging log&quot;);
+        logger.info(&quot;Info log&quot;);
+        logger.warn(&quot;Hey, This is a warning!&quot;);
+        logger.error(&quot;Oops! We have an Error. OK&quot;);
+        logger.fatal(&quot;Damn! Fatal error. Please fix me.&quot;);
+    }
+}
+</code></pre>
+<h2>一级标题</h2>
+<ol>
+<li>chenshi</li>
+<li>ssd</li>
+<li>ddd</li>
+<li>ddd</li>
+<li>sss</li>
+<li>ss </li>
+</ol>
+<h2>二级目录</h2>
+<blockquote>
+<ul>
+<li>这是什么1</li>
+<li>这是什么而</li>
+<li>这还是什么三</li>
+<li>吃饭</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong><em>斜粗体</em></strong> </li>
+</ul>
+</blockquote>
+</blockquote>
+<h2>名字</h2>
+<h2>~~删除~~</h2>
+<hr />
+<h2><img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/111111.jpg" alt="史努比" /></h2>
+<h2><a href="http://www.baidu.com" title="百度地址">百度</a></h2>
+<p>根据<a href="http://google.com/" title="google">谷歌</a>调查</p>
+<p>这是新浪的主页 <a href="http://www.sina.com.cn">http://www.sina.com.cn</a> <br />
+在java中输出Hello world : <code>system.out.println(&quot;Hello World&quot;);</code></p>
+<hr />
+<pre><code>// jQuery的helloword
+$(function(){
+    alert(&quot;Hello World&quot;)
+})
+</code></pre>
+
+<hr />
+<p><code>// jQuery的helloword
+$(function(){
+	alert(&quot;Hello World&quot;)
+})</code></p>
+<hr />
+<p>姓名|语文成绩|数学成绩|总成绩
+ ---|:---|:---:|---:
+ 喜羊羊|100|120|220</p>
+<hr />
+<table>
+<tr>
+<th width=10%, bgcolor=yellow >参数</th>
+<th width=40%, bgcolor=yellow>详细解释</th>
+<th width="50%", bgcolor=yellow>备注</th>
+</tr>
+<tr>
+<td bgcolor=#eeeeee> -l </td>
+<td> use a long listing format  </td>
+<td> 以长列表方式显示（显示出文件/文件夹详细信息）  </td>
+</tr>
+<tr>
+<td bgcolor=#00FF00>-t </td>
+<td> sort by modification time </td>
+<td> 按照修改时间排序（默认最近被修改的文件/文件夹排在最前面） </td>
+<tr>
+<td bgcolor=rgb(0,10,0)>-r </td>
+<td> reverse order while sorting </td>
+<td>  逆序排列 </td>
+</tr>
+</table>
 </main>
 		
 </body>
