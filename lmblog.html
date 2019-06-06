@@ -7,11 +7,12 @@
 	<meta name="description" content="" />
 	<script src="./js/lm.js"></script>
 	<script src="./js/jquery-3.3.1.min.js"></script>
-	<script src="./js/bootstrap.bundle.min.js" ></script>
+  <script src="./js/bootstrap.bundle.min.js" ></script>
+  <script src="./js/bootstrap.min.js" ></script>
 	<script>window.jQuery || document.write('<script src="./js/jquery-3.3.1.min.js"><\/script>')</script>
-	<link href="./css/common.css" rel="styleSheet" type="text/css">
+	<!-- <link href="./css/common.css" rel="styleSheet" type="text/css"> -->
 	<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="./css/markdown.css" rel="styleSheet" type="text/css">
+	<!-- <link href="./css/markdown.css" rel="styleSheet" type="text/css"> -->
     <title>first_vue_project</title>
   </head>
   <style type="text/css">
@@ -58,13 +59,20 @@
     </div>
   </nav>
 </header>
-
+<div class="container">
+  <h2>标签</h2>
+  <p>.label 类放置在不同的元素中（自适应大小）:</p>
+  <h1>标题 1 <span class="label label-primary">新</span></h1>
+  <h3>标题 3 <span class="label label-primary">新</span></h3>
+  <h5>标题 5 <span class="label label-primary">新</span></h5>
+  <p>段落 <span class="label label-primary">新</span></p>
+</div>
 <main role="main" class="lm-shadow">
  <div style="margin:0em 0.1em 0em 0.5em;">
     <h1>log4j2的配置，不同级别日志保存在不同文件夹（基于Springboot)</h1>
 </div>
-  <div style="font-size:0.9rem;margin:0.5em 0.1em 0.1em 0.5em;color:grey;">
-	  <label>2019年1月11日22:49:51</label>
+  <div style="font-size:0.9rem;margin:0.5em 0.1em 0.1em 0.5em;color:grey;" class= "container">
+	  <span class="label label-primary">2019年1月11日22:49:51</span>
 	  <label style="margin:0 0 0 5em">栗子味橙子</label>
 	  <label style="margin:0 0 0 5em">标签</label>
   </div>
