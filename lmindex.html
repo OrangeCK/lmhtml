@@ -8,10 +8,13 @@
 	<link href="./css/carousel.css" rel="styleSheet" type="text/css">
 	<link href="./css/common.css" rel="styleSheet" type="text/css">
 	<link href="./css/cikonss.css" rel="styleSheet" type="text/css">
+	<link href="./css/iconfont.css" rel="styleSheet" type="text/css">
 	<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script src="./js/lm.js"></script>
 	<script src="./js/jquery-3.3.1.min.js"></script>
 	<script src="./js/bootstrap.bundle.min.js" ></script>
+	<script src="./js/bootstrap.min.js" ></script>
+	<script src="./js/dateformat.js" ></script>
 	<script>window.jQuery || document.write('<script src="./js/jquery-3.3.1.min.js"><\/script>')</script>
     <title>first_vue_project</title>
   </head>
@@ -53,7 +56,21 @@
 	 .load_no_active{
 		display:none;
 	 }
-	 
+	 .f-divider_margin{
+		margin:2rem;
+	 }
+	 .badge_padding{
+		padding-bottom:1rem;
+	 }
+	 .badge_tag span{
+		margin-right:5px;
+	 }
+	 .inp_display{
+		display:none;
+	 }
+	 .p_center{
+		text-align:center;
+	 }
   </style>
   <body>
   <iframe src="lmheader.html" frameborder="0" width="100%" scrolling="No" height="56" leftmargin="0" topmargin="0"></iframe>
@@ -124,11 +141,14 @@
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <div class="container marketing lm-shadow" >
-
+  <div class="container marketing" >
+<div class="alert alert-primary" role="alert">
+  This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
     <!-- START THE FEATURETTES -->
 
-    <div class="row featurette">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+	<input value="0" class="inp_display"/>
       <div class="col-md-7">
         <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
@@ -147,11 +167,17 @@
       </div>
     </div>
 
-    <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row featurette shadow-lg p-3 mb-5 bg-white rounded">
+	<input value="1" class="inp_display"/>
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <h2 class="featurette-heading">Oh yeah, it’s that good.</h2>
+		<div class="badge_padding ">
+			<span class="badge badge-light">2019年1月11日22:49:51</span>
+			<span class="badge badge-light">栗子味橙子</span>
+			<span class="badge badge-pill badge-primary">Java</span>
+			<span class="badge badge-primary iconfont icon-tag-o">&nbsp栗子厨房</span>
+		</div>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
       <div class="col-md-5 order-md-1 imghover">
@@ -159,11 +185,17 @@
       </div>
     </div>
 
-    <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+		<input value="2" class="inp_display"/>
       <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <h2 class="featurette-heading">And lastly, this one. </h2>
+		<div class="badge_padding">
+			<span class="badge badge-light">2019年1月11日22:49:51</span>
+			<span class="badge badge-light">栗子味橙子</span>
+			<span class="badge badge-pill badge-primary">Java</span>
+			<span class="badge badge-pill badge-primary">Java</span>
+		</div>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
       <div class="col-md-5 imghover">
@@ -171,11 +203,17 @@
       </div>
     </div>
 
-    <hr class="featurette-divider">
 	
-	<div class="row featurette">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+	<input value="3" class="inp_display"/>
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">Hello, 今天怎么样. <span class="text-muted">看看你自己.</span></h2>
+		<div class="badge_padding">
+			<span class="badge badge-light">2019年1月11日22:49:51</span>
+			<span class="badge badge-light">栗子味橙子</span>
+			<span class="badge badge-pill badge-primary">Java</span>
+			<span class="badge badge-pill badge-primary">Java</span>
+		</div>
         <p class="lead">在三十岁之前，及时回头，改正。从此褪下幼稚的外衣。将智慧带走。然后，要做一个合格人。开始负担，开始顽强地爱着生活，爱着世界。</p>
       </div>
       <div class="col-md-5 order-md-1 imghover">
@@ -183,7 +221,6 @@
       </div>
     </div>
 
-	<hr class="featurette-divider">
     <!-- /END THE FEATURETTES -->
   </div><!-- /.container -->
   <!-- 加载loading -->
@@ -198,7 +235,8 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	<!-- <p class="p_center">友情链接：百度|新浪|阿里云</p> -->
+    <p class="p_center">&copy; 2019 LmOrange 蜀ICP备19015312号</p>
   </footer>
 
 </main>
@@ -234,29 +272,96 @@
 		//}
 	//});
 	// 加载数据
-	function loadingData(){
-		$(".marketing").append("<div class='row featurette'>"+
-  "<div class='col-md-7 order-md-2'>"+
-    "<h2 class='featurette-heading'>Hello, 今天怎么样. <span class='text-muted'>看看你自己.</span></h2>"+
-    "<p class='lead'>在三十岁之前，及时回头，改正。从此褪下幼稚的外衣。将智慧带走。然后，要做一个合格人。开始负担，开始顽强地爱着生活，爱着世界。</p>"+
-    "</div>"+
-    "<div class='col-md-5 order-md-1 imghover'>"+
-      "<svg class='bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto' width='500' height='500' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: 替换'><defs><pattern id='imgId2' width='1' height='1'><image width='100%' height='100%' xlink:href='./image/image2.jpg'></image></pattern><filter id='filter' x='0' y='0'><feGaussianBlur stdDeviation='5' /><feOffset dx='5' dy='5' /></filter></defs><rect fill='grey' filter='url(#filter)' width='95%' height='95%'/><rect width='95%' height='95%' fill='url(#imgId2)' /></svg>"+
-      "</div>"+
-      "</div>"+
-"<hr class='featurette-divider'>");
+	function loadingData(obj){
+		var index = $(".inp_display:last").val();
+		if(evenOrOdd(index)){
+			$(".marketing").append("<div class='row featurette shadow p-3 mb-5 bg-white rounded'>"+
+									"<input value='"+ ((+index) + 1) +"' class='inp_display'/>" + 
+								  "<div class='col-md-7'>"+
+									"<h2 class='featurette-heading'>Hello, 今天怎么样. <span class='text-muted'>看看你自己.</span></h2>"+
+									"<div class='badge_padding badge_tag'>"+
+										"<span class='badge badge-light'>" + DateFormat.format(new Date(), 'yyyy年MM月dd日 hh:mm:ss') + "</span>"+
+										"<span class='badge badge-light'>栗子味橙子</span>"+
+										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
+										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
+									"</div>"+
+									"<p class='lead'>在三十岁之前，及时回头，改正。从此褪下幼稚的外衣。将智慧带走。然后，要做一个合格人。开始负担，开始顽强地爱着生活，爱着世界。</p>"+
+									"</div>"+
+									"<div class='col-md-5 imghover'>"+
+									  "<svg class='bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto' width='500' height='500' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: 替换'><defs><pattern id='imgId2' width='1' height='1'><image width='100%' height='100%' xlink:href='./image/image2.jpg'></image></pattern><filter id='filter' x='0' y='0'><feGaussianBlur stdDeviation='5' /><feOffset dx='5' dy='5' /></filter></defs><rect fill='grey' filter='url(#filter)' width='95%' height='95%'/><rect width='95%' height='95%' fill='url(#imgId2)' /></svg>"+
+									  "</div>"+
+									  "</div>"+
+								"<hr class='featurette-divider'>");
+		}else{
+			$(".marketing").append("<div class='row featurette shadow p-3 mb-5 bg-white rounded'>"+
+									"<input value='"+ ((+index) + 1) +"' class='inp_display'/>" + 
+								  "<div class='col-md-7 order-md-2'>"+
+									"<h2 class='featurette-heading'>Hello, 今天怎么样. <span class='text-muted'>看看你自己.</span></h2>"+
+									"<div class='badge_padding badge_tag'>"+
+										"<span class='badge badge-light'>2019年1月11日22:49:51</span>"+
+										"<span class='badge badge-light'>栗子味橙子</span>"+
+										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
+										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
+									"</div>"+
+									"<p class='lead'>在三十岁之前，及时回头，改正。从此褪下幼稚的外衣。将智慧带走。然后，要做一个合格人。开始负担，开始顽强地爱着生活，爱着世界。</p>"+
+									"</div>"+
+									"<div class='col-md-5 order-md-1 imghover'>"+
+									  "<svg class='bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto' width='500' height='500' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: 替换'><defs><pattern id='imgId2' width='1' height='1'><image width='100%' height='100%' xlink:href='./image/image2.jpg'></image></pattern><filter id='filter' x='0' y='0'><feGaussianBlur stdDeviation='5' /><feOffset dx='5' dy='5' /></filter></defs><rect fill='grey' filter='url(#filter)' width='95%' height='95%'/><rect width='95%' height='95%' fill='url(#imgId2)' /></svg>"+
+									  "</div>"+
+									  "</div>"+
+								"<hr class='featurette-divider'>");
+		}
 		$("#load_div1").removeClass('load_active');
 		$("#load_div1").addClass('load_no_active');
 		$("#load_div2").removeClass('load_no_active');
 		$("#load_div2").addClass('load_active');
 	}
+
 	// 点击加载
 	function clickLoading(){
 		$("#load_div1").removeClass('load_no_active');
 		$("#load_div1").addClass('load_active');
 		$("#load_div2").removeClass('load_active');
 		$("#load_div2").addClass('load_no_active');
-		setTimeout('loadingData()',3000); 
+		setTimeout('imageBlogsMore()',0); 
+	}
+	// 判断是奇数还是偶数
+	function evenOrOdd(index){
+	    return (index%2 == 0) ? false : true;
+    }
+	// 时间格式化处理
+	function dateFtt(){ //author: meizz 
+	  var date = new Date();
+	  var fmt = "yyyy年MM月dd日 hh:mm:ss";
+	  var o = {   
+		"M+" : date.getMonth()+1,                 //月份   
+		"d+" : date.getDate(),                    //日   
+		"h+" : date.getHours(),                   //小时   
+		"m+" : date.getMinutes(),                 //分   
+		"s+" : date.getSeconds(),                 //秒   
+		"q+" : Math.floor((date.getMonth()+3)/3), //季度   
+		"S"  : date.getMilliseconds()             //毫秒   
+	  };   
+	  if(/(y+)/.test(fmt))   
+		fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
+	  for(var k in o)   
+		if(new RegExp("("+ k +")").test(fmt))   
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+	  return fmt;   
+	}
+	function imageBlogsMore(){
+		$.ajax({
+			type:"POST",
+			url:"http://127.0.0.1:8888/index/indexBlogsMore/2/5",
+			success:function(data){
+				if(!$.isEmptyObject(data)){
+					var obj = data.data;
+                    for(var i=0; i< obj.length; i++){
+                        loadingData(data.data[i]);
+                    }
+                }
+			}
+		});
 	}
 </script>
 </html>
