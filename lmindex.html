@@ -10,6 +10,7 @@
 	<link href="./css/cikonss.css" rel="styleSheet" type="text/css">
 	<link href="./css/iconfont.css" rel="styleSheet" type="text/css">
 	<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/css-bg.css" rel="stylesheet" type="text/css">
 	<script src="./js/lm.js"></script>
 	<script src="./js/jquery-3.3.1.min.js"></script>
 	<script src="./js/bootstrap.bundle.min.js" ></script>
@@ -71,6 +72,17 @@
 	 .p_center{
 		text-align:center;
 		font-size:8px;
+		color: #cccccc;
+		background: #111;
+		margin-top: -3rem;
+		padding-bottom:2rem;
+	 }
+	 .p_center ul{
+		list-style:none;
+		margin-bottom:0;
+	 }
+	 .p_center ul li{
+		display: inline-block;
 	 }
 	 .lm-shadow0{
 		-moz-box-shadow: 5px 5px 12px #ababab;
@@ -104,12 +116,27 @@
 	 .back-to-top{
 		font-size: 4rem;
 	 }
-	 
+	 #bubbles{
+		 position: fixed;
+         background: #fff;
+		 overflow: auto;
+		 z-index: -1;
+    }
+	 .footer_div{
+		background: url(./image/qunzi.png) no-repeat 50%;
+		height: 20rem;
+		position: relative;
+	 }
+	 #cnzz_stat_icon_1277763152 a{
+		color: #cccccc;
+	 }
   </style>
+  
   <body>
-  <iframe src="lmheader.html" frameborder="0" width="100%" scrolling="No" height="56" leftmargin="0" topmargin="0"></iframe>
 
-<main role="main">
+ <!-- <iframe src="lmheader.html" frameborder="0" width="100%" scrolling="No" height="56" leftmargin="0" topmargin="0"></iframe> -->
+<canvas id="bubbles"></canvas>
+<main role="main" id="jsi-particle-container">
   <div id="myCarousel" class="carousel slide">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -117,8 +144,8 @@
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="img-carousel" src="./image/bg3.jpg"></img>
+      <div class="carousel-item active" style="text-align:center">
+        <img class="img-carousel" src="./image/bg3.jpg" ></img>
         <div class="carousel-caption text-left">
             <h1>示例1号</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -168,14 +195,14 @@
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
-
-  <div class="container marketing" >
+<div >
+  <div class="container marketing" style="background:#fff;">
 <div class="alert alert-primary" role="alert">
   This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>
     <!-- START THE FEATURETTES -->
 
-    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded" >
 	<input value="0" class="inp_display"/>
       <div class="col-md-7">
         <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
@@ -196,7 +223,7 @@
     </div>
 
 
-    <div class="row featurette shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="row featurette shadow-lg p-3 mb-5 bg-white rounded" >
 	<input value="1" class="inp_display"/>
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">Oh yeah, it’s that good.</h2>
@@ -214,7 +241,7 @@
     </div>
 
 
-    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded" style="margin:0;">
 		<input value="2" class="inp_display"/>
       <div class="col-md-7">
         <h2 class="featurette-heading">And lastly, this one. </h2>
@@ -235,7 +262,7 @@
     </div>
 
 	
-    <div class="row featurette shadow p-3 mb-5 bg-white rounded">
+    <div class="row featurette shadow p-3 mb-5 bg-white rounded" style="margin:0;">
 	<input value="3" class="inp_display"/>
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">Hello, 今天怎么样. <span class="text-muted">看看你自己.</span></h2>
@@ -257,6 +284,9 @@
 
     <!-- /END THE FEATURETTES -->
   </div><!-- /.container -->
+  </div>
+  <!-- FOOTER -->
+  <footer class="footer_div">
   <!-- 加载loading -->
   <div id="load_div1" class="load_div load_no_active">
 	<image src="./image/loading2.gif" class="load_status1" />
@@ -267,19 +297,36 @@
 	<!--<span style="color:#777;">点击加载</span>
 	<span><image src="./image/point2.jpg" class="load_status2" /></span>-->
   </div>
-  <!-- FOOTER -->
-  <footer class="container">
-  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277763152'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277763152%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-      <span id="toTop" onclick="backToTop()" class="iconfont icon-icon-test back-to-top float-right-p"></span>
+  
 	<!-- <p class="p_center">友情链接：百度|新浪|阿里云</p> -->
-    <p class="p_center">&copy; 2019 LmOrange 蜀ICP备19015312号</p>
   </footer>
-
+  <div class="p_center">
+	
+	<ul>
+		<li>&copy; 2019 LmOrange 蜀ICP备19015312号</li>
+	</ul>
+	<ul>
+		<li>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277763152'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277763152%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+		</li>
+	</ul>
+	<ul>
+		<li>友情链接：</li>
+		<li><a href="https://www.baidu.com" target="_blank">百度</a></li>
+		<li>阿里云</li>
+		<li>淘宝</li>
+		<li>凤凰网</li>
+	</ul>
+  </div>
+  
+   <span id="toTop" onclick="backToTop()" class="iconfont icon-icon-test back-to-top float-right-p"></span>
 </main>
 </body>
+<script type="text/javascript" src="./js/canvas5.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#myCarousel").carousel('pause');
+		RENDERER.init();
 	});
 	// 回到顶部
 	function backToTop(){
@@ -320,7 +367,7 @@
 								  "<div class='col-md-7'>"+
 									"<h2 class='featurette-heading'>Hello, 今天怎么样. <span class='text-muted'>看看你自己.</span></h2>"+
 									"<div class='badge_padding badge_tag'>"+
-										"<span class='badge badge-light'>" + DateFormat.format(new Date(), 'yyyy年MM月dd日 hh:mm:ss') + "</span>"+
+										"<span class='badge badge-light'>" + dateFtt(obj.sCt) + "</span>"+
 										"<span class='badge badge-light'>栗子味橙子</span>"+
 										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
 										"<span class='badge badge-primary iconfont icon-tag-o'>&nbsp栗子厨房</span>"+
@@ -373,21 +420,27 @@
 	function dateFtt(){ //author: meizz 
 	  var date = new Date();
 	  var fmt = "yyyy年MM月dd日 hh:mm:ss";
-	  var o = {   
-		"M+" : date.getMonth()+1,                 //月份   
-		"d+" : date.getDate(),                    //日   
-		"h+" : date.getHours(),                   //小时   
-		"m+" : date.getMinutes(),                 //分   
-		"s+" : date.getSeconds(),                 //秒   
-		"q+" : Math.floor((date.getMonth()+3)/3), //季度   
-		"S"  : date.getMilliseconds()             //毫秒   
-	  };   
-	  if(/(y+)/.test(fmt))   
-		fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
-	  for(var k in o)   
-		if(new RegExp("("+ k +")").test(fmt))   
-	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-	  return fmt;   
+	  var o = {
+				'M+': date.getMonth() + 1, //月份
+				'd+': date.getDate(), //日
+				'h+': date.getHours(), //小时
+				'm+': date.getMinutes(), //分
+				's+': date.getSeconds(), //秒
+				'q+': Math.floor((date.getMonth() + 3) / 3), //季度
+				'S': date.getMilliseconds() //毫秒
+			};
+		if(!this.isNotEmpty(fmt)){
+			fmt = 'yyyy-MM-dd hh:mm:ss';
+		}
+		if (/(y+)/.test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+		}
+		for (var k in o) {
+			if (new RegExp('(' + k + ')').test(fmt)) {
+				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
+			}
+		}
+		return fmt;  
 	}
 	function imageBlogsMore(){
 		$.ajax({
@@ -403,5 +456,6 @@
 			}
 		});
 	}
+	
 </script>
 </html>
