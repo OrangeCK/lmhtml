@@ -36,7 +36,7 @@ function bubble() {
     
     ctx.strokeStyle = "rgba(255, 255, 255, .5)";
     ctx.stroke();
-    ctx.fillStyle = "hsla(203, 75%, 69%," + b.alpha + ")";
+    ctx.fillStyle = "hsla(213, 75%, 69%," + b.alpha + ")";
     ctx.fill();
     b.y -= b.speed;
     if (b.y < 0) {
