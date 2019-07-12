@@ -24,6 +24,13 @@
         font-size: 1.125rem;
         text-anchor: middle;
       }
+	  .lm-shadow{
+		background:#fff;
+		-moz-box-shadow: 2px 2px 10px #CBD0D3;
+		-webkit-box-shadow: 2px 2px 10px #CBD0D3;
+		box-shadow:2px 2px 10px #CBD0D3;
+		padding: 60px 1em 1em 1em;
+	}
     @media (min-width: 768px) {
 		h2 img{
 			width:50%;
@@ -39,20 +46,27 @@
 		font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 	 }
 	 .float-right-p{
+		width:46px;
 		position: fixed;
 		z-index:99;
 		right:0.5rem; 
-		bottom:6rem;
-		opacity:0.2;
-		
+		bottom:0.5rem;
 	 }
-	 .float-right-p:hover{
-		color: blue;
-		opacity:0.9;
+	 .float-right-p .btn-link{
+		text-decoration:none;
+	 }
+	 .float-right-p .float-btn{
+		opacity:0.5;
+	 }
+	 .float-right-p .float-btn:hover{
+		opacity:1;
 		cursor: pointer;
 	 }
+	 .float-right-p button{
+		padding:0;
+	 }
 	 .back-to-top{
-		font-size: 4rem;
+		font-size: 3rem;
 	 }
 	 #bubbles{
 		 position: fixed;
@@ -68,6 +82,43 @@
 	 #cnzz_stat_icon_1277763152 a{
 		color: #cccccc;
 	 }
+	 .float-right{
+		float: right;
+	}
+	.mg_bottom{
+		margin-bottom: 1rem;
+	}
+	.p-record{
+		display:inline-block;
+		padding-left:5px;
+		color:grey;
+		margin:0;
+	}
+	.like-btn{
+		background-color:red;
+		-moz-box-shadow: 2px 5px 20px red;
+		-webkit-box-shadow: 2px 5px 20px red;
+		box-shadow:2px 5px 20px red;
+		transition: all 0.5s;
+	}
+	.like-btn:hover{
+		border-color:red;
+		background-color:red;
+		transform: scale(1.01);
+	}
+	.sponsors-btn{
+		border-color:#DAA520;
+		background-color:#DAA520;
+		-moz-box-shadow: 2px 5px 20px #DAA520;
+		-webkit-box-shadow: 2px 5px 20px #DAA520;
+		box-shadow:2px 5px 20px #DAA520;
+		transition: all 0.5s;
+	}
+	.sponsors-btn:hover{
+		border-color:#DAA520;
+		background-color:#DAA520;
+		transform: scale(1.01);
+	}
   </style>
   <body>
 <!--<iframe src="./lmheader.html" width="100%" scrolling="no" id="test" onload="this.height=60" class="fixed-top" ></iframe>-->
@@ -105,6 +156,10 @@
 	<span class="badge badge-light">栗子味橙子</span>
 	<span class="badge badge-primary iconfont icon-06tags"> Java</span>
 	<span class="badge badge-pill badge-info iconfont icon-tag-o"> 栗子厨房</span>
+	<div class="float-right" style="color:grey;">
+		<span class="iconfont icon-xihuan4 "><p class="p-record">30256</p></span>
+		<span class="iconfont icon-eye2 "><p class="p-record">1230256</p></span>
+	</div>
   </div>
   <hr style="border-bottom: 1px solid #ddd;">
   <!-- <p>[TOC]</p> -->
@@ -334,25 +389,20 @@ $(function(){
 <td>  逆序排列 </td>
 </tr>
 </table>
-</main>
-  <div class="p_center">
-	
-	<ul>
-		<li>&copy; 2019 LmOrange 蜀ICP备19015312号</li>
-	</ul>
-	<ul>
-		<li>
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277763152'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277763152%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
-		</li>
-	</ul>
-	<ul>
-		<li>友情链接：</li>
-		<li><a href="https://www.baidu.com" target="_blank">百度</a></li>
-		<li>阿里云</li>
-		<li>淘宝</li>
-		<li>凤凰网</li>
-	</ul>
-  </div>		
+
+<div style="text-align:center;padding:2rem 1rem 0 1rem;">
+	<button type="button" class="btn btn-danger iconfont icon-xihuan4 like-btn ">&nbsp喜欢</button>
+	<button type="button" class="btn btn-danger iconfont icon-qian1 sponsors-btn ">&nbsp打赏</button>
+</div>
+
+</main>	
+<div style="text-align:center;" class="float-right-p">
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -68px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -318px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -484px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -234px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><span id="toTop" onclick="backToTop()"  class="iconfont icon-icon-test back-to-top"></span></button>
+</div>	
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -360,5 +410,17 @@ $(function(){
 			hljs.highlightBlock(block);
 		  });
 	});
+	// 回到顶部
+	function backToTop(){
+		$('body,html').animate({scrollTop:0},500);
+	}
+	// 获取页面被卷起来的高度
+	function scrollTop(){
+		return Math.max(
+		//chrome
+		document.body.scrollTop,
+		//firefox/IE
+		document.documentElement.scrollTop);
+	}
 </script>
 </html>
