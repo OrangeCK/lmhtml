@@ -11,12 +11,14 @@
 	<script src="./js/bootstrap.bundle.min.js" ></script>
 	<script src="./js/bootstrap.min.js" ></script>
 	<script src="./js/highlight.pack.js" ></script>
+	<script src="./js/lm-toast.js" ></script>
 	<script>window.jQuery || document.write('<script src="./js/jquery-3.3.1.min.js"><\/script>')</script>
 	<link href="./css/iconfont.css" rel="styleSheet" type="text/css">
 	<link href="./css/bootstrap.min.css" rel="stylesheet">
 	<link href="./css/common.css" rel="styleSheet" type="text/css">
 	<link href="./css/markdown.css" rel="styleSheet" type="text/css">
 	<link href="./css/styles/idea.css" rel="styleSheet" type="text/css">
+	<link href="./css/lm-toast.css" rel="styleSheet" type="text/css">
     <title>first_vue_project</title>
   </head>
   <style type="text/css">
@@ -346,7 +348,8 @@
 <h2>名字</h2>
 <h2>~~删除~~</h2>
 <hr />
-<h2><img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmSystem111111.jpg" alt="史努比" /></h2>
+<!--<h2><img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmSystem111111.jpg" alt="史努比" /></h2>-->
+<h2><img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/20171103113806104.png" alt="史努比" /></h2>
 <h2><a href="http://www.baidu.com" title="百度地址">百度</a></h2>
 <p>根据<a href="http://google.com/" title="google">谷歌</a>调查</p>
 <p>这是新浪的主页 <a href="http://www.sina.com.cn">http://www.sina.com.cn</a> <br />
@@ -389,10 +392,22 @@ $(function(){
 <td>  逆序排列 </td>
 </tr>
 </table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	  <div class="modal-header" style="padding:4px;">
+        <h5 class="modal-title" style="margin:0;">Modal title</h5>
+      </div>
+      <div class="modal-body">
+		<img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/20171103113806104.png" alt="史努比" />
+      </div>
+    </div>
+  </div>
+</div>
 
 <div style="text-align:center;padding:2rem 1rem 0 1rem;">
-	<button type="button" class="btn btn-danger iconfont icon-xihuan4 like-btn ">&nbsp喜欢</button>
-	<button type="button" class="btn btn-danger iconfont icon-qian1 sponsors-btn ">&nbsp打赏</button>
+	<button style="display:none;" type="button" class="btn btn-danger iconfont icon-xihuan4 like-btn" onclick="praiseBlog('12')">&nbsp喜欢</button>
+	<button type="button" class="btn btn-secondary iconfont icon-qian1 sponsors-btn" data-toggle="modal" data-target="#exampleModal">&nbsp打赏</button>
 </div>
 
 </main>	
@@ -421,6 +436,13 @@ $(function(){
 		document.body.scrollTop,
 		//firefox/IE
 		document.documentElement.scrollTop);
+	}
+	// 点赞
+	function praiseBlog(id){
+		toast({
+			message:"谢谢您的喜欢" + id,
+			time:1000
+		  });
 	}
 </script>
 </html>
