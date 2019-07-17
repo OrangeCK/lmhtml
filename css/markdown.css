@@ -60,6 +60,7 @@ p, blockquote, ul, ol, dl, table, pre {
 配色方案：#355C7D, #725A7A, #C56CB6, #FF7582
 #3B7B9A, #0085c5, #00141d, #A5DEF1
 #1F9CE4, #1F9CE4, #FF7582, #1F9CE4
+linear-gradient(to bottom right,rgb(255, 255, 255), #949494, #fff, #737373)!important
 =============================================================================*/
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,7 +86,8 @@ h2 {
   font-size: 1.3em;
   color: #fff;
   border: 1px solid rgb(193, 193, 193);
-  background: linear-gradient(to top right,#777, #777, #777, #777)!important;
+  /*background: linear-gradient(to top right,#949494, #949494, #949494, #737373)!important;*/
+  background-color:rgb(0, 127, 189);
   border-radius: 5px;
   padding: 0.2em 0.5em;
 }
