@@ -237,9 +237,10 @@ pre tt {
 =============================================================================*/
 
 blockquote {
-  border-left: 0px solid #DDD;
-  padding: 0 0px;
-  color: #000;
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  background-color: #f5f5f5;
+  color: #777;
 }
 
 blockquote>:first-child {
