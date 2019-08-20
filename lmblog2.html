@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="">
+	<meta name="description" content="" />
+	<script src="./js/lm.js"></script>
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="./js/bootstrap.bundle.min.js" ></script>
+	<script src="./js/bootstrap.min.js" ></script>
+	<script src="./js/highlight.pack.js" ></script>
+		<script src="./js/highlightjs-line-numbers.min.js" ></script>
+	<script src="./js/lm-toast.js" ></script>
+	<script src="./js/zoomify.min.js" ></script>
+	<script src="./js/echo.min.js" ></script>
+	<script src="./js/viewer.min.js" ></script>
+	<script>window.jQuery || document.write('<script src="./js/jquery-3.3.1.min.js"><\/script>')</script>
+	<link href="./css/iconfont.css" rel="styleSheet" type="text/css">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/common.css" rel="styleSheet" type="text/css">
+	<link href="./css/markdown.css" rel="styleSheet" type="text/css">
+	<link href="./css/styles/gruvbox-dark.css" rel="styleSheet" type="text/css">
+	<link href="./css/lm-toast.css" rel="styleSheet" type="text/css">
+	<link href="./css/zoomify.min.css" rel="styleSheet" type="text/css">
+	<link href="./css/viewer.min.css" rel="styleSheet" type="text/css">
+    <title>first_vue_project</title>
+  </head>
+  <style type="text/css">
+	.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+	  .lm-shadow{
+		background:#fff;
+		-moz-box-shadow: 2px 2px 10px #CBD0D3;
+		-webkit-box-shadow: 2px 2px 10px #CBD0D3;
+		box-shadow:2px 2px 10px #CBD0D3;
+		padding: 60px 1em 1em 1em;
+	}
+    @media (min-width: 768px) {
+		h2 img{
+			width:50%;
+		}
+		.bd-placeholder-img-lg {
+		  font-size: 3.5rem;
+		}
+	  }
+	 .my-sm-0:hover{
+		background-color:orange;
+	 }
+	 .header-famliy{
+		font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	 }
+	 .float-right-p{
+		width:46px;
+		position: fixed;
+		z-index:99;
+		right:0.5rem; 
+		bottom:0.5rem;
+	 }
+	 .float-right-p .btn-link{
+		text-decoration:none;
+	 }
+	 .float-right-p .float-btn{
+		opacity:0.5;
+	 }
+	 .float-right-p .float-btn:hover{
+		opacity:1;
+		cursor: pointer;
+	 }
+	 .float-right-p button{
+		padding:0;
+	 }
+	 .back-to-top{
+		font-size: 3rem;
+	 }
+	 #bubbles{
+		 position: fixed;
+         background: #fff;
+		 overflow: auto;
+		 z-index: -1;
+    }
+	 .footer_div{
+		background: url(./image/qunzi.png) no-repeat 50%;
+		height: 20rem;
+		position: relative;
+	 }
+	 #cnzz_stat_icon_1277763152 a{
+		color: #cccccc;
+	 }
+	 .float-right{
+		float: right;
+	}
+	.mg_bottom{
+		margin-bottom: 1rem;
+	}
+	.p-record{
+		display:inline-block;
+		padding-left:5px;
+		color:grey;
+		margin:0;
+	}
+	.like-btn{
+		background-color:red;
+		-moz-box-shadow: 2px 5px 20px red;
+		-webkit-box-shadow: 2px 5px 20px red;
+		box-shadow:2px 5px 20px red;
+		transition: all 0.5s;
+	}
+	.like-btn:hover{
+		border-color:red;
+		background-color:red;
+		transform: scale(1.01);
+	}
+	.sponsors-btn{
+		border-color:#DAA520;
+		background-color:#DAA520;
+		-moz-box-shadow: 2px 5px 20px #DAA520;
+		-webkit-box-shadow: 2px 5px 20px #DAA520;
+		box-shadow:2px 5px 20px #DAA520;
+		transition: all 0.5s;
+	}
+	.sponsors-btn:hover{
+		border-color:#DAA520;
+		background-color:#DAA520;
+		transform: scale(1.01);
+	}
+	h3:before {   
+		content: "#";   
+		width: 50px;
+		height: 25px;
+		background: red;
+		border-radius: 50%;
+	}
+	.hljs {
+		padding: 0;
+	}
+	.hljs-ln td {
+		padding: 0px 10px;
+	}
+	td.hljs-ln-numbers {
+		border-right: 1px solid grey;
+		text-align: center;
+		color: grey;
+		vertical-align: top;
+	}
+	td.hljs-ln-code {
+		padding-left: 5px;
+	}
+
+  </style>
+  <body>
+<!--<iframe src="./lmheader.html" width="100%" scrolling="no" id="test" onload="this.height=60" class="fixed-top" ></iframe>-->
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background:linear-gradient(to bottom right,#3B7B9A, #0085c5, #00141d, #A5DEF1)!important">
+      <a class="navbar-brand" href="/index/indexBlogs"><span>首页</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto" style="margin:0">
+          <li class="nav-item active">
+            <a class="nav-link disabled" href="#">橙子个人生活</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/index/indexBlogs?parentCategoryId=lzcf">栗子厨房</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/index/indexBlogs?parentCategoryId=java">Java</a>
+          </li>
+        </ul>
+        <div class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:#fff;border-color:orange;">Search</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+ <main role="main" id="main" class="shadow p-3 mb-5 bg-white rounded" style="margin-top:60px;">
+ <div style="margin:0em 0.1em 0em 0.5em;">
+    <h1>log4j2的配置，不同级别日志保存在不同文件夹（基于Springboot)</h1>
+</div>
+  <div>
+	<span class="badge badge-light">2019年1月11日22:49:51</span>
+	<span class="badge badge-light">栗子味橙子</span>
+	<span class="badge badge-primary iconfont icon-06tags"> Java</span>
+	<span class="badge badge-pill badge-info iconfont icon-tag-o"> 栗子厨房</span>
+	<div class="float-right" style="color:grey;">
+		<span class="iconfont icon-xihuan4 "><p class="p-record">30256</p></span>
+		<span class="iconfont icon-eye2 "><p class="p-record">1230256</p></span>
+	</div>
+  </div>
+  <hr style="border-bottom: 1px solid #ddd;">
+  <!-- <p>[TOC]</p> -->
+<h2>1.前言汇总</h2>
+<blockquote>
+<ul>
+<li>目的是想按照按照规定的格式打印在控制台，<mark>badge-primary</mark>，并且按照日志的级别，保存为不同的log文件.</li>
+<li>首先你得搭建一个简单的springboot项目，这个就直接在网上查，例子数不胜数</li>
+<li>然后在pom.xml文件中添加依赖：</li>
+</ul>
+</blockquote>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;!--添加log4j的依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-log4j2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<blockquote>
+<ul>
+<li>至于为什么要加上exclusions那一段标签，原因是因为springboot有个默认的日志，叫logback,
+其实这个日志也是比较好用的，可以看我的下篇文章阐述；所以要把他排除，不然也许会报出错误。</li>
+<li>然后是在resources目录下加入日志的配置文件，至于名字,在log4j2里，配置文件检测的过程如下：</li>
+</ul>
+<blockquote>
+<ol>
+<li>log4j会检测名为&quot;log4j.configurationFile&quot;的系统属性值，如果这个值被设置了，则会尝试通过ConfigurationFactory来加载这个值对应的文件。</li>
+<li>否则它会尝试查找log4j2-test.properties这个文件。</li>
+<li>否则它会尝试查找文件log4j2-test.yaml 和 log4j2-test.yml。</li>
+<li>否则它会尝试查找文件log4j2-test.json 和 log4j2-test.jsn。</li>
+<li>否则查找文件log4j2-test.xml。</li>
+<li>否则查找文件log4j2.properties。</li>
+<li>否则查找文件log4j2.yaml 和 log4j2.yml。</li>
+<li>否则查找文件log4j2.json 和 log4j2.jsn。</li>
+<li>否则查找文件log4j2.xml。</li>
+</ol>
+</blockquote>
+<ul>
+<li>我直接取的是log4j2.xml</li>
+</ul>
+</blockquote>
+<h2>log4j2.xml的实际配置</h2>
+<blockquote>
+<ul>
+<li>这里我直接po出整个log4j2.xml吧，详细的解释我就直接写在配置文件中的注释了吧</li>
+</ul>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration packages=&quot;com.example.baseframe.myspringboot.config&quot;&gt;
+&lt;Properties&gt;
+    &lt;property name=&quot;Log_Home&quot;&gt;d:/logs/myspringboot/&lt;/property&gt;
+&lt;/Properties&gt;
+&lt;appenders&gt;
+    &lt;!--这个输出控制台的配置--&gt;
+    &lt;Console name=&quot;Console&quot; target=&quot;SYSTEM_OUT&quot;&gt;
+        &lt;!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）,ACCEPT(接受其及以上)，DENY(拒绝以下)，NEUTRAL(中立，由下一个ThresholdFilter处理)--&gt;
+        &lt;ThresholdFilter level=&quot;TRACE&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot; /&gt;
+        &lt;!--输出日志格式--&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+    &lt;/Console&gt;
+    &lt;!--这个会只打印出所有的DEBUG信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Debug&quot; fileName=&quot;${Log_Home}/debug/debug.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;!-- 日志文件大小 --&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;!-- 最多保留文件数 --&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;!--至于为什么只会打印出DEBUG级别的日志，就是因为下面的Filters标签,
+            onMatch=&quot;ACCEPT&quot; 表示匹配该级别及以上
+            onMatch=&quot;DENY&quot; 表示不匹配该级别及以上
+            onMatch=&quot;NEUTRAL&quot; 表示该级别及以上的，由下一个filter处理，如果当前是最后一个，则表示匹配该级别及以上
+            onMismatch=&quot;ACCEPT&quot; 表示匹配该级别以下
+            onMismatch=&quot;NEUTRAL&quot; 表示该级别及以下的，由下一个filter处理，如果当前是最后一个，则不匹配该级别以下的--&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;INFO&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;DEBUG&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的INFO信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Info&quot; fileName=&quot;${Log_Home}/info/info.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;WARN&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;INFO&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的WARN信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Warn&quot; fileName=&quot;${Log_Home}/warn/warn.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;ERROR&quot; onMatch=&quot;DENY&quot; onMismatch=&quot;NEUTRAL&quot;/&gt;
+            &lt;ThresholdFilter level=&quot;WARN&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+    &lt;!--这个会只打印出所有的ERROR信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档--&gt;
+    &lt;RollingFile name=&quot;RollingFile_Error&quot; fileName=&quot;${Log_Home}/error/error.log&quot; filePattern=&quot;${Log_Home}$${date:yyyy-MM}/app-%d{yyyyMMddHHmmssSSS}.log.gz&quot;&gt;
+        &lt;PatternLayout pattern=&quot;%d{yyyy-MM-dd HH:mm:ss}| %-5level|%ip|%thread| %logger{50}| %msg%n&quot; /&gt;
+        &lt;SizeBasedTriggeringPolicy size=&quot;20MB&quot; /&gt;
+        &lt;DefaultRolloverStrategy max=&quot;20&quot;/&gt;
+        &lt;Filters&gt;
+            &lt;ThresholdFilter level=&quot;ERROR&quot; onMatch=&quot;ACCEPT&quot; onMismatch=&quot;DENY&quot;/&gt;
+        &lt;/Filters&gt;
+    &lt;/RollingFile&gt;
+&lt;/appenders&gt;
+
+&lt;Loggers&gt;
+    &lt;!--然后定义logger，只有定义了logger并引入的appender，
+        appender才会生效，additivity默认是true,表示将此logger的打印信息向上级传递，
+        在这儿root就是他的上级，root的设置的打印级别是debug,logger级别没有低于他，
+        所以root里面也会打印一遍--&gt;
+    &lt;logger name=&quot;com.example.baseframe.myspringboot&quot; level=&quot;DEBUG&quot; additivity=&quot;true&quot;&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Debug&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Info&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Warn&quot; /&gt;
+        &lt;AppenderRef ref=&quot;RollingFile_Error&quot; /&gt;
+    &lt;/logger&gt;
+    &lt;!--建立一个默认的root的logger--&gt;
+    &lt;root level=&quot;DEBUG&quot;&gt;
+        &lt;AppenderRef ref=&quot;Console&quot; /&gt;
+    &lt;/root&gt;
+&lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+
+<blockquote>
+<ul>
+<li>在java代码中怎么使用</li>
+</ul>
+</blockquote>
+<pre><code>public class Log4j2DemoApplication implements ApplicationRunner {
+    private static final Logger logger = LogManager.getLogger(Log4j2DemoApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(Log4j2DemoApplication.class, args);
+    }
+
+    @Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+        logger.debug(&quot;Debugging log&quot;);
+        logger.info(&quot;Info log&quot;);
+        logger.warn(&quot;Hey, This is a warning!&quot;);
+        logger.error(&quot;Oops! We have an Error. OK&quot;);
+        logger.fatal(&quot;Damn! Fatal error. Please fix me.&quot;);
+    }
+}
+</code></pre>
+<h2>一级标题</h2>
+<ol>
+<li>chenshi</li>
+<li>ssd</li>
+<li>ddd</li>
+<li>ddd</li>
+<li>sss</li>
+<li>ss </li>
+</ol>
+<h2>二级目录</h2>
+<blockquote>
+<ul>
+<li>这是什么1</li>
+<li>这是什么而</li>
+<li>这还是什么三</li>
+<li>吃饭</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong><em>斜粗体</em></strong> </li>
+</ul>
+</blockquote>
+</blockquote>
+<h2>名字</h2>
+<h2>~~删除~~</h2>
+<h3>测试h3标签</h3>
+<hr />
+<!--<h2><img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmSystem111111.jpg" alt="史努比" /></h2>-->
+<h2><img id="viewertest" src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/20171103113806104.png" class="img-rounded" alt="" /></h2>
+<img data-echo="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/20171103113806104.png" class="img-rounded" alt="Photo" />
+<h2><a href="http://www.baidu.com" title="百度地址">百度</a></h2>
+<p>根据<a href="http://google.com/" title="google">谷歌</a>调查</p>
+<p>这是新浪的主页 <a href="http://www.sina.com.cn">http://www.sina.com.cn</a> <br />
+在java中输出Hello world : <code>system.out.println(&quot;Hello World&quot;);</code></p>
+<hr />
+<pre><code>// jQuery的helloword
+$(function(){
+    alert(&quot;Hello World&quot;)
+})
+</code></pre>
+<blockquote> <p>引入 MyBatis-Plus 之后请不要再次引入 MyBatis 以及 MyBatis-Spring，以避免因版本差异导致的问题。</p> </blockquote>
+<hr />
+<p><code>// jQuery的helloword
+$(function(){
+	alert(&quot;Hello World&quot;)
+})</code></p>
+<hr />
+<p>姓名|语文成绩|数学成绩|总成绩
+ ---|:---|:---:|---:
+ 喜羊羊|100|120|220</p>
+<hr />
+<table>
+<tr>
+<th width=10%, bgcolor=yellow >参数</th>
+<th width=40%, bgcolor=yellow>详细解释</th>
+<th width="50%", bgcolor=yellow>备注</th>
+</tr>
+<tr>
+<td bgcolor=#eeeeee> -l </td>
+<td> use a long listing format  </td>
+<td> 以长列表方式显示（显示出文件/文件夹详细信息）  </td>
+</tr>
+<tr>
+<td bgcolor=#00FF00>-t </td>
+<td> sort by modification time </td>
+<td> 按照修改时间排序（默认最近被修改的文件/文件夹排在最前面） </td>
+<tr>
+<td bgcolor=rgb(0,10,0)>-r </td>
+<td> reverse order while sorting </td>
+<td>  逆序排列 </td>
+</tr>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	  <div class="modal-header" style="padding:4px;">
+        <h5 class="modal-title" style="margin:0;">Modal title</h5>
+      </div>
+      <div class="modal-body">
+		<img src="http://2019-2-16-ck.oss-cn-beijing.aliyuncs.com/lmsystem/20171103113806104.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:2rem 1rem 0 1rem;">
+	<button style="display:none;" type="button" class="btn btn-danger iconfont icon-xihuan4 like-btn" onclick="praiseBlog('12')">&nbsp喜欢</button>
+	<button type="button" class="btn btn-secondary iconfont icon-qian1 sponsors-btn" data-toggle="modal" data-target="#exampleModal">&nbsp打赏</button>
+</div>
+
+</main>	
+<div style="text-align:center;" class="float-right-p">
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -68px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -318px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -484px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><div style="width:44px;height:44px;background: url(./image/zonghelogo.png) -234px -24px no-repeat;"></div></button>
+	<button type="button" class="btn btn-link float-btn"><span id="toTop" onclick="backToTop()"  class="iconfont icon-icon-test back-to-top"></span></button>
+</div>
+	
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('pre code').each(function(i, block) {
+			hljs.highlightBlock(block);
+			hljs.initLineNumbersOnLoad();
+		  });
+		echo.init({
+			offset: 0,
+			throttle: 2500,
+			unload: false,
+			callback: function (element, op) {
+			  console.log('loaded ok.');
+			}
+		});
+		//$('img').zoomify();
+		var viewer = new Viewer(document.getElementById('viewertest'),{
+			toolbar:false,navbar:false,
+		});
+	});
+	// 回到顶部
+	function backToTop(){
+		$('body,html').animate({scrollTop:0},500);
+	}
+	// 获取页面被卷起来的高度
+	function scrollTop(){
+		return Math.max(
+		//chrome
+		document.body.scrollTop,
+		//firefox/IE
+		document.documentElement.scrollTop);
+	}
+	// 点赞
+	function praiseBlog(id){
+		toast({
+			message:"谢谢您的喜欢" + id,
+			time:1000
+		  });
+	}
+</script>
+</html>
