@@ -466,9 +466,7 @@ $(function(){
 			}
 		});
 		//$('img').zoomify();
-		var viewer = new Viewer(document.getElementById('viewertest'),{
-			toolbar:false,navbar:false,
-		});
+		$('img').viewer({toolbar:false,navbar:false});
 	});
 	// 回到顶部
 	function backToTop(){
