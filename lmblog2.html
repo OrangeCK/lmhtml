@@ -153,7 +153,9 @@
 	td.hljs-ln-code {
 		padding-left: 5px;
 	}
-
+	#discussantForm .form-group{
+		margin-bottom: 0.2rem;
+	 }
   </style>
   <body>
 <!--<iframe src="./lmheader.html" width="100%" scrolling="no" id="test" onload="this.height=60" class="fixed-top" ></iframe>-->
@@ -428,11 +430,12 @@ $(function(){
 </tr>
 </table>
 
-<div style="width:80%;padding-top:1rem;margin:20px auto 0 auto;" class="lm-shadow">
+<div style="width:90%;padding-top:1rem;margin:20px auto 0 auto;" class="lm-shadow" id = "discussantForm">
+	<div>
 	<div class="form-group row">
 		<label for="discussant" class="col-sm-1 col-form-label">名称</label>
 		<div class="col-sm-5">
-		  <input type="text" class="form-control" name="discussant" id="discussant" placeholder="名称">
+		  <input type="text" class="form-control form-control-sm" name="discussant" id="discussant" placeholder="名称">
 		</div>
 		<label class="col-sm-1 col-form-label">性别</label>
 		<div class="col-sm-5">
@@ -449,18 +452,62 @@ $(function(){
 	<div class="form-group row">
 		<label for="discussantEmail" class="col-sm-1 col-form-label">Email</label>
 		<div class="col-sm-11">
-		  <input type="email" class="form-control" id="discussantEmail" name="discussantEmail" placeholder="Email">
+		  <input type="email" class="form-control form-control-sm" id="discussantEmail" name="discussantEmail" placeholder="Email">
 		</div>
 	  </div>
 	<div class="form-group row">
 	<label for="discussantOpinion" class="col-sm-1 col-form-label">发言</label>
 	<div class="col-sm-11">
-	  <textarea class="form-control" aria-label="With textarea" name="discussantOpinion" id="discussantOpinion" placeholder="您的意见..."></textarea>
+	  <textarea class="form-control form-control-sm" aria-label="With textarea" name="discussantOpinion" id="discussantOpinion" placeholder="您的意见..."></textarea>
 	</div>
   </div>
   <div style="text-align:center;">
-            <button class="btn btn-danger ladda-button" data-style="expand-right"><span class="ladda-label">expand-right</span></button>
-		<!--<input type="button" onclick="testZeZhao()" class="btn btn-info ladda-button" data-style="zoom-out" value="submit" />-->
+            <button class="btn btn-primary ladda-button btn-sm" data-style="expand-right" onclick="testZeZhao()">提交</button>
+		<!--<input type="button" onclick="testZeZhao()" class="btn btn-info ladda-button" data-style="expand-right" value="submit" />-->
+	</div>
+	</div>
+	<div style="">
+		<hr class="featurette-divider">
+		<div style="display:table;width:100%;">
+			<div class="discussant_option" style="display:table-cell;width:60px;padding:0;vertical-align:top;">
+				<div style="width:47px;height:47px;background: url(./image/商务团队头像200x200.png) -4px -21px no-repeat;"></div>
+			</div>
+			<div style="display:table-cell;padding:0;vertical-align:top;font: bold 14px 仿宋,黑体;">
+				<p style="margin:0;">右边对齐的是父元素的bottom，也就是最低的bottom</p>
+				<ul style="list-style:none;margin:1rem 0 0 0;font: bold 12px 仿宋,黑体;color:grey;float:right;">
+					<li style="display:inline-block;">2019-8-23 16:12:11</li>
+					<li style="display:inline-block;">点赞(0)</li>
+				</ul>
+			</div>
+		</div>
+		<hr class="featurette-divider">
+		<div style="display:table;width:100%;">
+			<div style="display:table-cell;width:60px;padding:0;vertical-align:top;">
+				<div style="width:47px;height:47px;background: url(./image/商务团队头像200x200.png) -4px -78px no-repeat;"></div>
+			</div>
+			<div style="display:table-cell;padding:0;vertical-align:top;font: bold 14px 仿宋,黑体;">
+			<p style="margin:0;">商务团队右边对齐的是父元素的bottom，也就是最低的bottom右边对齐的是父元素的bottom，也就是最低的bottom
+			也就是最低的bottom右边对齐的是父元素的bottom，也就是最低的bottom</p>
+			<ul style="list-style:none;margin:1rem 0 0 0;font: bold 12px 仿宋,黑体;color:grey;float:right;">
+					<li style="display:inline-block;">2019-8-23 16:12:11</li>
+					<li style="display:inline-block;">点赞(0)</li>
+				</ul>
+			</div>
+		</div>
+		<hr class="featurette-divider">
+		<div style="display:table;width:100%;">
+			<div style="display:table-cell;width:60px;padding:0;vertical-align:top;">
+				<div style="width:47px;height:47px;background: url(./image/商务团队头像200x200.png) -4px -133px no-repeat;"></div>
+			</div>
+			<div style="display:table-cell;padding:0;vertical-align:top;font: bold 14px 仿宋,黑体;">
+			<p style="margin:0;">商务团队右边对齐的是父元素的bottom，也就是最低的bottom右边对齐的是父元素的bottom</p>
+			<ul style="list-style:none;margin:1rem 0 0 0;font: bold 12px 仿宋,黑体;color:grey;float:right;">
+					<li style="display:inline-block;">2019-8-23 16:12:11</li>
+					<li style="display:inline-block;">点赞(0)</li>
+				</ul>
+			</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -507,17 +554,21 @@ $(function(){
 		//$('img').zoomify();
 		$('img').viewer({toolbar:false,navbar:false});
 	});
-	Ladda.bind( '.ladda-button', { callback: function( instance ) {
-				var progress = 0;
-				var interval = setInterval( function() {
-					progress = 0.5;
-					instance.setProgress( progress );
-					setTimeout(function(){
-						instance.stop();
-						clearInterval( interval );
-					},2000);
-				});
-			} } );
+	//Create a new instance of ladda for the specified button
+	// var l = Ladda.create( document.querySelector( '.my-button' ) );
+	//Start loading
+	// l.start();
+	//Will display a progress bar for 50% of the button width
+	// l.setProgress( 0.5 );
+	//Stop loading
+	// l.stop();
+	//Toggle between loading/not loading states
+	// l.toggle();
+	//Check the current state
+	// l.isLoading();
+	//Delete the button's ladda instance
+	// l.remove();
+
 	function showLoading(text){
 		$('#loadingModal').modal('show');
 	}
@@ -526,8 +577,13 @@ $(function(){
 	}
 	// 测试遮罩
 	function testZeZhao(){
-		Ladda.bind( 'div:not(.progress-demo) button', { timeout: 2000 } );
-		//setTimeout(hideLoading(), 3000);
+		var ladda = Ladda.create(document.querySelector( '.ladda-button' ));
+		ladda.start();  
+        //ladda.stop();  
+        //ladda.toggle(); 
+        //ladda.isLoading();  
+        ladda.setProgress( 0.5 ); 
+		setTimeout(function(){ladda.toggle();}, 2000);
 	}
 	// 回到顶部
 	function backToTop(){
